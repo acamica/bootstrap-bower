@@ -1623,15 +1623,8 @@ angular.module('ui.bootstrap.modal', [])
         // Closing animation
         scope.animate = false;
 
-        if (domEl.attr('modal-animation') && $animate.enabled()) {
-          // transition out
-          domEl.one('$animate:close', function closeFn() {
-            $rootScope.$evalAsync(afterAnimating);
-          });
-        } else {
-          // Ensure this call is async
-          $timeout(afterAnimating);
-        }
+        // Ensure this call is async
+        $timeout(afterAnimating);
 
         function afterAnimating() {
           if (afterAnimating.done) {
